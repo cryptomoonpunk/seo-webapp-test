@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
   <title>SEO NLP Analyzer</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
-    <header>
-      <h1>SEO NLP Analyzer</h1>
-      <p>Enter a URL to get instant insights with AI-powered analysis.</p>
-    </header>
+    <h1>SEO NLP Analyzer</h1>
+    <p>Enter a URL to get main content, cleaned text, and basic word frequency.</p>
 
-    <main>
-      <form id="urlForm">
-        <input type="url" id="urlInput" placeholder="https://example.com" required>
-        <button type="submit">Analyze</button>
-      </form>
-      <div id="spinner" class="spinner hidden"></div>
-      <div id="result">
-        <!-- The analysis result or word cloud will appear here -->
-      </div>
-    </main>
+    <form id="urlForm">
+      <input type="url" id="urlInput" placeholder="https://example.com" required />
+      <button type="submit">Analyze</button>
+    </form>
 
-    <footer>
-      <p>&copy; 2025 SEO NLP Analyzer</p>
-    </footer>
+    <div id="spinner" class="spinner hidden"></div>
+    <div id="result"></div>
   </div>
   <script src="script.js"></script>
 </body>

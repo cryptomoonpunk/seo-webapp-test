@@ -1,11 +1,35 @@
-// text_utils.js - Utility functions for text processing
+// text_utils.js
+import { JSDOM } from 'jsdom';
+import { Readability } from '@mozilla/readability';
 
-function cleanText(text) {
-    return text.replace(/[^\w\s]/gi, '').toLowerCase();
+/**
+ * Extract the main article content using Mozilla's readability
+ */
+export function extractMainContent(html) {
+  // Provide a mock URL to the constructor so relative links are resolved
+  const dom = new JSDOM(html, { url: 'https://example.com' });
+  const reader = new Readability(dom.window.document);
+  const article = reader.parse();
+  // If no main content found, fallback to entire body text
+  return article?.textContent || dom.window.document.body.textContent || '';
 }
 
-function extractWords(text) {
-    return text.split(/\s+/).filter(word => word.length > 2);
+/**
+ * Basic cleaning: remove extra spaces, newlines, etc.
+ */
+export function cleanText(text) {
+  return text.replace(/\s+/g, ' ').trim();
 }
 
-module.exports = { cleanText, extractWords };
+/**
+ * Build a simple word frequency map from cleaned text
+ */
+export function getWordFrequency(text) {
+  const freq = {};
+  const words = text.toLowerCase().split(/\s+/);
+  for (const w of words) {
+    if (!freq[w]) freq[w] = 0;
+    freq[w]++;
+  }
+  return freq;
+}
