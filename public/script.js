@@ -2,7 +2,7 @@
 
 document.getElementById('urlForm').addEventListener('submit', async (e) => {
   e.preventDefault();
-  
+
   const url = document.getElementById('urlInput').value;
   const spinner = document.getElementById('spinner');
   const result = document.getElementById('result');

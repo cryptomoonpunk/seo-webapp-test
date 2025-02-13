@@ -6,7 +6,6 @@ import { Readability } from '@mozilla/readability';
  * Extract the main article content using Mozilla's readability
  */
 export function extractMainContent(html) {
-  // Provide a mock URL to the constructor so relative links are resolved
   const dom = new JSDOM(html, { url: 'https://example.com' });
   const reader = new Readability(dom.window.document);
   const article = reader.parse();
