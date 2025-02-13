@@ -1,174 +1,33 @@
-<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>SEO Analysis Tool</title>
-  <style>
-    /* Base Reset & Layout */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: "Inter", Arial, sans-serif;
-      background: linear-gradient(135deg, #e9f1ff, #fdfaff);
-      color: #333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, #0077ff, #a400ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-align: center;
-    }
-
-    p {
-      font-size: 1.2rem;
-      color: #555;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .tool-container {
-      width: 100%;
-      max-width: 800px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-      margin-bottom: 40px;
-    }
-
-    .input-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    #urlInput {
-      flex: 1 1 300px;
-      min-width: 240px;
-      padding: 12px;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      transition: border-color 0.3s;
-    }
-
-    #urlInput:focus {
-      outline: none;
-      border-color: #0077ff;
-    }
-
-    #analyzeButton {
-      padding: 12px 30px;
-      font-size: 1rem;
-      cursor: pointer;
-      background: #0077ff;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      transition: background-color 0.3s, transform 0.2s;
-    }
-
-    #analyzeButton:hover {
-      background: #005ad1;
-      transform: translateY(-2px);
-    }
-
-    #analyzeButton:active {
-      transform: translateY(0);
-    }
-
-    /* Results Section */
-    #results {
-      margin-top: 20px;
-      padding: 20px;
-      background: #f9f9f9;
-      border-radius: 8px;
-      min-height: 100px;
-    }
-
-    #results section {
-      margin-bottom: 30px;
-      padding: 20px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    }
-
-    #results section h2 {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      color: #0077ff;
-    }
-
-    #results ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    #results ul li {
-      padding: 5px 0;
-      border-bottom: 1px solid #eee;
-      font-size: 0.95rem;
-    }
-
-    .spinner {
-      border: 4px solid rgba(0, 0, 0, 0.1);
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border-left-color: #0077ff;
-      animation: spin 1s linear infinite;
-      display: inline-block;
-      vertical-align: middle;
-      margin-left: 10px;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-      .tool-container {
-        padding: 20px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SEO NLP Analyzer</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>SEO Analysis Tool</h1>
-  <p>Enter a URL below to get a detailed SEO analysis like the pros.</p>
+  <div class="container">
+    <header>
+      <h1>SEO NLP Analyzer</h1>
+      <p>Enter a URL to get instant insights with AI-powered analysis.</p>
+    </header>
 
-  <div class="tool-container">
-    <div class="input-section">
-      <input type="text" id="urlInput" placeholder="Enter URL here" />
-      <button id="analyzeButton">Analyze</button>
-    </div>
+    <main>
+      <form id="urlForm">
+        <input type="url" id="urlInput" placeholder="https://example.com" required>
+        <button type="submit">Analyze</button>
+      </form>
+      <div id="spinner" class="spinner hidden"></div>
+      <div id="result">
+        <!-- The analysis result or word cloud will appear here -->
+      </div>
+    </main>
 
-    <div id="results"></div>
+    <footer>
+      <p>&copy; 2025 SEO NLP Analyzer</p>
+    </footer>
   </div>
-
-  <!-- Load script -->
   <script src="script.js"></script>
 </body>
 </html>
