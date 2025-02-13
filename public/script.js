@@ -153,7 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (trigramsSection) fragment.appendChild(trigramsSection);
 
     // Google Trends
-    // If you have Chart.js loaded, you can use createGoogleTrendsSection. Otherwise, just show them as a list
     if (data.google_trends && Object.keys(data.google_trends).length > 0) {
       const trendsSection = document.createElement("section");
       const heading = document.createElement("h2");
@@ -199,14 +198,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Debounced analyze function
-  function debounce(fn, delay) {
-    let timeoutId;
-    return function (...args) {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => fn.apply(this, args), delay);
-    };
-  }
-
   const debouncedAnalyze = debounce(async () => {
     const url = urlInput.value.trim();
     if (!url || !isValidUrl(url)) {
@@ -215,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     analyzeButton.disabled = true;
     console.log(`🔍 Fetching analysis for: ${url}`);
-    resultsDiv.innerHTML = `<p>⏳ Loading analysis...</p>`;
+    resultsDiv.innerHTML = `<p>⏳ Loading analysis... <span class="spinner"></span></p>`;
 
     try {
       const data = await fetchAnalysis(url);
@@ -230,30 +221,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 300);
 
   analyzeButton.addEventListener("click", debouncedAnalyze);
-
-  // Helper: Validate URL
-  function isValidUrl(url) {
-    try {
-      new URL(url);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  // Helper: Cache to avoid repeated calls
-  const cache = {};
-  async function fetchAnalysis(url) {
-    if (cache[url]) {
-      console.log("✅ Using cached data");
-      return cache[url];
-    }
-    const response = await fetch(`/analyze?url=${encodeURIComponent(url)}`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    const data = await response.json();
-    cache[url] = data;
-    return data;
-  }
 });
