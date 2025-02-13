@@ -1,0 +1,90 @@
+/* 🌟 Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 📦 Main Container */
+.container {
+    width: 90%;
+    max-width: 700px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* 🎯 Input and Button */
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    padding: 10px 15px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* 📊 Results Section */
+#results {
+    margin-top: 20px;
+    text-align: left;
+}
+
+#results h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#results h3 {
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+#results ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#results ul li {
+    background: #f1f3f5;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+#results canvas {
+    margin-top: 20px;
+}
+
+#results div {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f1f3f5;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+}
